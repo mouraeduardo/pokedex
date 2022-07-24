@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.container{
+    width: 90%;   
+}
+
+html, body{
+    background-color: rgb(235, 235, 235);
+}
+
+a{
+    text-decoration: none;
+    transition: 0.3s opacity;
+}
+
+a:hover{
+    opacity: 0.7;
+}
