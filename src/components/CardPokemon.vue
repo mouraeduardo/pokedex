@@ -2,7 +2,9 @@
     <div id="CardsPet">
       <div id="card">
         <img id="pokemon-img" :src="this.pokemons.sprites.other.home.front_default" alt="foto pokemon">
+        <label for="">{{nomePokemon}}</label>
       </div>
+
     </div>
 </template>
 
@@ -36,7 +38,8 @@ export default {
 
 #card{
   display: flex;
-  align-content: center;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   border-radius: 20px;
   border-color: blue;
