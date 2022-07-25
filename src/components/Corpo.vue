@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <div v-for="(pokemon, index) in pokemons.results" :key="index"  >
+    <main>
+        <div id="cards" v-for="(pokemon, index) in pokemons.results" :key="index"  >
             <Card :nomePokemon="pokemon.name"/>
         </div>
-    </div>
+    </main>
 </template>
 
 <script>
@@ -30,5 +30,11 @@ export default {
 
 <style scoped>
 
+#cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
 
 </style>
