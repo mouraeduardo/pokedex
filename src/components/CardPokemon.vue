@@ -2,7 +2,9 @@
     <div id="CardsPet">
       <div id="card">
         <img id="pokemon-img" :src="this.pokemons.sprites.other.home.front_default" alt="foto pokemon">
-        <label for="">{{nomePokemon}}</label>
+        <div id="info-pokemon">
+          <label id="nome-pokemon" for="">{{nomePokemon}}</label>
+        </div>
       </div>
 
     </div>
@@ -13,7 +15,7 @@ import api from '../services/api.js';
 
 export default {
     name : 'CardPokemon',
-    props: ['nomePokemon'],
+    props: ['nomePokemon', 'numPokedex'],
     data(){
       return{
         pokemons: [],
@@ -42,7 +44,7 @@ export default {
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  border-color: blue;
+  border: 2px solid chartreuse;
   width: 200px;
   height: 250px;
   background-color: white;
@@ -53,5 +55,27 @@ export default {
   height: 190px;
 }
 
+#info-pokemon{
+  border: 2px 2px;
+  border-color: black;
+  display: flex;
+  background-color: chartreuse;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  border-end-start-radius: 20px;
+  border-end-end-radius: 20px;
+}
+
+label{
+  font-size: 20px;
+  font-family: sans-serif;
+  padding: 5px;
+}
+
+#num-pokedex{
+
+}
 
 </style>

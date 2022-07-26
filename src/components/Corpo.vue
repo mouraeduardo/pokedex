@@ -1,7 +1,7 @@
 <template>
     <main>
         <div id="cards" v-for="(pokemon, index) in pokemons.results" :key="index"  >
-            <Card :nomePokemon="pokemon.name"/>
+            <Card :nomePokemon="pokemon.name" :numPokedex="index + 1"/>
         </div>
     </main>
 </template>
