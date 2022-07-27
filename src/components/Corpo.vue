@@ -1,6 +1,10 @@
 <template>
     <main>
-        <div id="cards" v-for="(pokemon, index) in pokemons.results" :key="index"  >
+        <SearchBar v-on:searchPokemon="searchPokemonCorpo($event)"/>
+        <div id="cards" v-if="this.pesquisaAtiva"  >
+            <Card :nomePokemon="pokemons.name"/>
+        </div>
+        <div id="cards" v-else v-for="(pokemon, index) in pokemons" :key="index"  >
             <Card :nomePokemon="pokemon.name" :numPokedex="index + 1"/>
         </div>
     </main>
@@ -9,21 +13,37 @@
 <script>
 import api from '../services/api.js';
 import Card from './CardPokemon.vue';
+import SearchBar from './SearchBar.vue'
+
 
 export default {
     name: 'corpo',
     components: {
-        Card
+        Card,
+        SearchBar
   },
     data(){
         return{
-            pokemons: []
+            pokemons: null,
+            pesquisaAtiva: false,
         }
     },
     mounted(){
         api.get('pokemon').then(response => {
+            this.pokemons = response.data.results;
+        });
+    },
+    methods: {
+        searchPokemonCorpo(pokemonTeste) {
+            api.get('pokemon/' + pokemonTeste).then(response => {
+            this.pesquisaAtiva = true;
+            console.log(this.pesquisaAtiva);
             this.pokemons = response.data;
         });
+        },
+        PesquisaAtivada(){
+            this.pesquisaAtiva = true;
+        }
     }
 }
 </script>

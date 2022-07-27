@@ -1,7 +1,7 @@
 <template>    
     <div id="CardsPet">
       <div id="card">
-        <img id="pokemon-img" :src="this.pokemons.sprites.other.home.front_default" alt="foto pokemon">
+        <img id="pokemon-img" :src="this.pokemons" alt="foto pokemon">
         <div id="info-pokemon">
           <label id="nome-pokemon" for="">{{nomePokemon}}</label>
         </div>
@@ -24,7 +24,7 @@ export default {
     },
     mounted(){
         api.get('pokemon/' + this.nomePokemon).then(response => {
-            this.pokemons = response.data;
+            this.pokemons = response.data.sprites.other.home.front_default;
         });
     },
     methods:{
@@ -72,10 +72,6 @@ label{
   font-size: 20px;
   font-family: sans-serif;
   padding: 5px;
-}
-
-#num-pokedex{
-
 }
 
 </style>
