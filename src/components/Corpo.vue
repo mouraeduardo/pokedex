@@ -29,20 +29,29 @@ export default {
         }
     },
     mounted(){
-        api.get('pokemon').then(response => {
-            this.pokemons = response.data.results;
-        });
+        this.AllPokemon();
     },
     methods: {
         searchPokemonCorpo(pokemonTeste) {
             api.get('pokemon/' + pokemonTeste).then(response => {
-            this.pesquisaAtiva = true;
-            console.log(this.pesquisaAtiva);
+            this.PesquisaAtivada(pokemonTeste);
+            console.log(pokemonTeste);
             this.pokemons = response.data;
         });
         },
-        PesquisaAtivada(){
-            this.pesquisaAtiva = true;
+        PesquisaAtivada(pokemonPesquisa){
+            if(!pokemonPesquisa.length == 0){
+                this.pesquisaAtiva = true;
+                console.log(this.pesquisaAtiva);
+            } else{
+                this.AllPokemon();
+                this.pesquisaAtiva = false;
+            }
+        },
+        AllPokemon(){
+            api.get('pokemon').then(response => {
+            this.pokemons = response.data.results;
+        });
         }
     }
 }
